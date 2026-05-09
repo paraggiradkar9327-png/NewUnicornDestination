@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unicorn Destinations – Create Itinerary</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/pages/admin.css">
+</head>
+
+<body>
+
+    <header class="hero">
+        <div class="hero-badge">Admin Panel</div>
+        <div class="hero-logo-wrap">
+            <img src="/assest/DESTINATION.png" alt="Unicorn Destinations Logo" class="hero-logo">
+        </div>
+        <h1 class="hero-title"><em>Unicorn</em> Destinations</h1>
+        <div class="hero-divider">
+            <div class="hero-diamond"></div>
+        </div>
+        <p class="hero-sub">Create Client Itinerary</p>
+    </header>
+
+    <div class="ribbon">✦ &nbsp; Build Your Client's Perfect Journey &nbsp; ✦</div>
+
+    <div class="form-intro">
+        <div class="form-intro-inner">
+            <p class="section-eyebrow">Itinerary Builder</p>
+            <h2 class="form-intro-heading">Craft the <em>Journey</em></h2>
+            <div class="section-rule"><span></span></div>
+            <p class="form-intro-sub">Add each day's description, photos and videos. When done, submit to generate a
+                shareable client link.</p>
+        </div>
+    </div>
+
+    <main>
+        <form id="itineraryForm">
+            <div id="daysContainer"></div>
+            <div class="form-actions">
+                <button type="button" id="addDayBtn">
+                    <span class="btn-icon">+</span>
+                    <span>Add Day</span>
+                </button>
+                <button type="button" id="clearAllBtn" disabled>
+                    <span class="btn-icon">✕</span>
+                    <span>Clear All</span>
+                </button>
+                <button type="submit" class="submitBtn">
+                    <span class="btn-icon">✈</span>
+                    <span>Generate Itinerary</span>
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <div class="footer-logo-wrap">
+            <img src="/assest/DESTINATION.png" alt="Unicorn Destinations" class="footer-logo">
+        </div>
+        <p class="footer-brand">Unicorn Destinations</p>
+        <p class="footer-tagline">Crafting Journeys Worth Remembering</p>
+        <div class="footer-rule"></div>
+        <div class="footer-links">
+            <a href="tel:8857955359">📞 8857955359</a>
+            <a href="mailto:unicorndestinations@gmail.com">✉️ unicorndestinations@gmail.com</a>
+        </div>
+    </footer>
+
+    <script type="module" src="/js/pages/admin.js"></script>
+</body>
+
+</html>

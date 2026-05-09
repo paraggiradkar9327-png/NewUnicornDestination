@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unicorn Destinations – Your Itinerary</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/pages/preview.css">
+</head>
+
+<body>
+
+    <!-- ── HERO ── -->
+    <header class="hero">
+        <div class="hero-badge">Personalised Itinerary</div>
+        <div class="hero-logo-wrap">
+            <img src="/assest/DESTINATION.png" alt="Unicorn Destinations Logo" class="hero-logo">
+        </div>
+        <h1 class="hero-title"><em>Unicorn</em> Destinations</h1>
+        <div class="hero-divider">
+            <div class="hero-diamond"></div>
+        </div>
+        <p class="hero-sub">Your Personalised Tour Itinerary</p>
+        <div class="hero-scroll">
+            <div class="scroll-line"></div>
+            Scroll
+        </div>
+    </header>
+
+    <!-- ── GOLD RIBBON ── -->
+    <div class="ribbon">✦ &nbsp; Crafted Exclusively For You &nbsp; ✦</div>
+
+    <!-- ── MAIN ── -->
+    <main class="main" id="previewContent">
+
+        <!-- Stats strip — values injected by JS -->
+        <div class="highlights fade-up">
+            <p class="highlights-eyebrow">Trip Overview</p>
+            <h2 class="highlights-title">Your <em>Journey</em> at a Glance</h2>
+            <p class="highlights-sub">A summary of your personalised itinerary</p>
+            <div class="highlights-grid" id="statsGrid"></div>
+        </div>
+
+        <!-- Day by day header -->
+        <div class="section-header fade-up">
+            <p class="section-eyebrow">Day by Day</p>
+            <h2 class="section-title">Your <em>Journey</em></h2>
+            <div class="section-rule"><span></span></div>
+        </div>
+
+        <!-- Day Cards injected by JS -->
+        <div id="daysList"></div>
+
+        <!-- Contact -->
+        <div class="section-header fade-up" style="padding-top:0;">
+            <p class="section-eyebrow">Get in Touch</p>
+            <h2 class="section-title">We're Here for <em>You</em></h2>
+            <div class="section-rule"><span></span></div>
+        </div>
+
+        <div class="contact-strip fade-up">
+            <a href="tel:8857955359" class="contact-card">
+                <div class="contact-icon">📞</div>
+                <div>
+                    <p class="contact-label">Call Us</p>
+                    <p class="contact-value">+91 88579 55359</p>
+                </div>
+            </a>
+            <a href="mailto:unicorndestinations@gmail.com" class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <div>
+                    <p class="contact-label">Email Us</p>
+                    <p class="contact-value">unicorndestinations@gmail.com</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- PDF CTA -->
+        <div class="cta-wrap fade-up">
+            <button class="pdf-btn" id="downloadPdfBtn">
+                <span class="btn-icon">↓</span>
+                Download Your Itinerary PDF
+            </button>
+        </div>
+
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+        <div class="footer-logo-wrap">
+            <img src="/assest/DESTINATION.png" alt="Unicorn Destinations" class="footer-logo">
+        </div>
+        <p class="footer-brand">Unicorn Destinations</p>
+        <p class="footer-tagline">Crafting Journeys Worth Remembering</p>
+        <div class="footer-rule"></div>
+        <div class="footer-links">
+            <a href="tel:8857955359">📞 8857955359</a>
+            <a href="mailto:unicorndestinations@gmail.com">✉️ unicorndestinations@gmail.com</a>
+        </div>
+    </footer>
+
+    <script type="module" src="/js/pages/preview.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,558 @@
+/* ═══════════════════════════════════════════════
+   UNICORN DESTINATIONS — admin.css
+   Admin page: form intro, day blocks, upload UI,
+   action buttons. Imports all shared modules.
+   ═══════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap');
+@import '../modules/base.css';
+@import '../modules/hero.css';
+@import '../modules/layout.css';
+@import '../modules/modal.css';
+
+
+/* ════════════════════════════════
+   FORM INTRO
+   ════════════════════════════════ */
+
+.form-intro {
+  background: #fff;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+.form-intro-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 52px 24px 44px;
+  text-align: center;
+}
+
+.form-intro-heading {
+  font-family: var(--serif);
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 0;
+}
+
+.form-intro-heading em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.form-intro-sub {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+
+/* ════════════════════════════════
+   MAIN LAYOUT
+   ════════════════════════════════ */
+
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+
+/* ════════════════════════════════
+   DAY BLOCK
+   ════════════════════════════════ */
+
+.dayBlock {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  animation: slideIn 0.4s ease both;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Day header bar */
+.dayBlock h3 {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff;
+  background: linear-gradient(90deg, var(--deep) 0%, var(--deep-mid) 100%);
+  padding: 16px 24px;
+  margin: 0;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 2px solid var(--gold);
+}
+
+.dayBlock h3::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* Inner padding */
+.dayBlock>*:not(h3) {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.dayBlock>label {
+  padding-top: 18px;
+}
+
+.dayBlock>br {
+  display: none;
+}
+
+.dayBlock>*:last-child {
+  padding-bottom: 22px;
+}
+
+/* Labels */
+.dayBlock label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+
+/* Inputs */
+.dayBlock textarea,
+.dayBlock input[type="file"],
+.dayBlock input[type="date"].day-date,
+.dayBlock input[type="text"].day-title,
+.dayBlock input[type="text"].day-destination,
+.dayBlock input[type="text"].day-daysOfTravel,
+.dayBlock input[type="text"].day-pax {
+  width: 100%;
+  border: 1.5px solid rgba(201, 168, 76, 0.3);
+  border-radius: var(--radius-sm);
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--text);
+  background: var(--cream);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.dayBlock textarea {
+  padding: 12px 14px;
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.7;
+  margin-bottom: 4px;
+}
+
+.dayBlock input[type="date"].day-date,
+.dayBlock input[type="text"].day-title,
+.dayBlock input[type="text"].day-destination,
+.dayBlock input[type="text"].day-daysOfTravel,
+.dayBlock input[type="text"].day-pax {
+  padding: 11px 14px;
+  margin-bottom: 4px;
+}
+
+.dayBlock input[type="file"] {
+  padding: 10px 12px;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+/* Focus */
+.dayBlock textarea:focus,
+.dayBlock input[type="date"].day-date:focus,
+.dayBlock input[type="text"].day-title:focus,
+.dayBlock input[type="text"].day-destination:focus,
+.dayBlock input[type="text"].day-daysOfTravel:focus .dayBlock input[type="text"].day-pax:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.12);
+  background: #fff;
+}
+
+.dayBlock input[type="text"].day-title::placeholder {
+  color: var(--muted);
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.dayBlock input[type="file"]::-webkit-file-upload-button {
+  background: linear-gradient(135deg, var(--deep), var(--deep-mid));
+  color: var(--gold-light);
+  border: 1px solid var(--gold);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 10px;
+  letter-spacing: 1px;
+  transition: background 0.2s;
+}
+
+.dayBlock input[type="file"]::-webkit-file-upload-button:hover {
+  background: var(--deep-mid);
+}
+
+.dayBlock input[type="date"].day-date::-webkit-calendar-picker-indicator {
+  opacity: 0.4;
+  cursor: pointer;
+  filter: invert(60%) sepia(40%) saturate(400%) hue-rotate(10deg);
+}
+
+
+/* ════════════════════════════════
+   PHOTO UPLOAD GRID
+   ════════════════════════════════ */
+
+.photo-upload-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.photo-upload-slot {
+  position: relative;
+}
+
+.photo-slot-label {
+  display: block;
+  cursor: pointer;
+}
+
+.photo-slot-label input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.photo-slot-preview {
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px dashed rgba(201, 168, 76, 0.35);
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.25s, background 0.25s;
+}
+
+.photo-slot-label:hover .photo-slot-preview {
+  border-color: var(--gold);
+  background: var(--warm);
+}
+
+.photo-slot-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.slot-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.slot-text {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.slot-subtext {
+  font-size: 10px;
+  color: #c0b0a0;
+  margin-top: -2px;
+}
+
+.photo-preview-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 1;
+}
+
+
+/* ════════════════════════════════
+   VIDEO UPLOAD
+   ════════════════════════════════ */
+
+.video-upload-wrapper {
+  margin-bottom: 16px;
+}
+
+.video-slot-label {
+  display: block;
+  cursor: pointer;
+  position: relative;
+}
+
+.video-slot-label input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.video-slot-preview {
+  position: relative;
+  aspect-ratio: 16/7;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px dashed rgba(201, 168, 76, 0.35);
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.25s, background 0.25s;
+}
+
+.video-slot-label:hover .video-slot-preview {
+  border-color: var(--gold);
+  background: var(--warm);
+}
+
+.video-slot-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.video-preview-el {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.video-filename {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 500;
+  background: rgba(0, 0, 0, 0.48);
+  padding: 2px 9px;
+  border-radius: 6px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Remove buttons */
+.photo-remove-btn,
+.video-remove-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 10;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(26, 14, 6, 0.85);
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: background 0.2s, transform 0.2s;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.photo-remove-btn:hover,
+.video-remove-btn:hover {
+  background: var(--crimson);
+  border-color: transparent;
+  transform: scale(1.12);
+}
+
+.video-remove-btn {
+  top: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  font-size: 12px;
+}
+
+
+/* ════════════════════════════════
+   FORM ACTION BUTTONS
+   ════════════════════════════════ */
+
+.form-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  background: linear-gradient(135deg, var(--deep), var(--deep-mid));
+  border: 1.5px solid var(--gold);
+  padding: 14px 32px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 18px rgba(201, 168, 76, 0.18);
+}
+
+button:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(201, 168, 76, 0.3);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+#addDayBtn {
+  background: transparent;
+  color: var(--gold);
+  border: 1.5px solid var(--gold);
+  box-shadow: none;
+}
+
+#addDayBtn:hover {
+  background: rgba(201, 168, 76, 0.08);
+  box-shadow: 0 4px 18px rgba(201, 168, 76, 0.15);
+}
+
+.submitBtn {
+  font-size: 11px;
+  padding: 15px 40px;
+  background: linear-gradient(135deg, var(--deep), var(--deep-mid));
+  border-color: var(--gold);
+  box-shadow: 0 6px 28px rgba(201, 168, 76, 0.25);
+  letter-spacing: 3px;
+}
+
+.submitBtn:hover {
+  box-shadow: 0 10px 40px rgba(201, 168, 76, 0.38);
+}
+
+.btn-icon {
+  font-size: 15px;
+  line-height: 1;
+}
+
+#clearAllBtn {
+  background: transparent;
+  color: rgba(201, 168, 76, 0.35);
+  border: 1.5px solid rgba(201, 168, 76, 0.2);
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+#clearAllBtn.clear-btn-active {
+  color: var(--gold);
+  border-color: var(--gold);
+  opacity: 1;
+  cursor: pointer;
+}
+
+#clearAllBtn.clear-btn-active:hover {
+  background: rgba(201, 168, 76, 0.08);
+  box-shadow: 0 4px 16px rgba(201, 168, 76, 0.15);
+}
+
+#clearAllBtn:disabled {
+  pointer-events: none;
+}
+
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  main {
+    padding: 28px 16px 60px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-actions button {
+    justify-content: center;
+  }
+
+  .photo-upload-grid {
+    gap: 7px;
+  }
+
+  .slot-icon {
+    font-size: 16px;
+  }
+
+  .slot-text {
+    font-size: 9px;
+  }
+}

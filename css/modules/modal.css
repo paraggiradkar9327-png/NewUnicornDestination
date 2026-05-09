@@ -1,0 +1,148 @@
+/* ═══════════════════════════════════════════════
+   UNICORN DESTINATIONS — modal.css
+   Shared link / share modal styles
+   ═══════════════════════════════════════════════ */
+
+/* ── MODAL CONTAINER ── */
+#linkModal,
+#shareModal {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+
+.link-modal-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(26,14,6,0.78);
+  backdrop-filter: blur(6px);
+}
+
+.link-modal-box {
+  position: relative; z-index: 1;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 44px 40px 36px;
+  max-width: 520px; width: 100%;
+  box-shadow: 0 30px 80px rgba(26,14,6,0.3);
+  text-align: center;
+  animation: modalPop 0.35s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+.link-modal-box::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.88) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.link-modal-icon {
+  font-size: 48px; line-height: 1; margin-bottom: 16px;
+}
+
+.link-modal-title {
+  font-family: var(--serif);
+  font-size: 32px; font-weight: 300;
+  color: var(--text); margin-bottom: 8px;
+}
+
+.link-modal-sub {
+  font-size: 14px; color: var(--muted);
+  margin-bottom: 28px; line-height: 1.7; font-weight: 300;
+}
+
+/* ── LINK COPY ROW ── */
+.link-copy-row {
+  display: flex; gap: 8px;
+  background: var(--cream);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 6px 6px 14px;
+  align-items: center; margin-bottom: 10px;
+}
+
+.link-input {
+  flex: 1; border: none; background: transparent;
+  font-family: var(--sans); font-size: 12.5px;
+  color: var(--muted); outline: none;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.copy-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: linear-gradient(135deg, var(--deep), var(--deep-mid));
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  padding: 9px 20px; border-radius: 22px;
+  font-family: var(--sans); font-size: 11px; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 3px 14px rgba(201,168,76,0.2);
+  white-space: nowrap; flex-shrink: 0;
+}
+
+.copy-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 22px rgba(201,168,76,0.32);
+}
+
+.copy-icon { font-size: 14px; }
+
+.copy-success {
+  font-size: 13px; color: #3a7c3a;
+  font-weight: 500; margin-bottom: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ── MODAL ACTIONS ── */
+.link-modal-actions {
+  display: flex; gap: 10px;
+  justify-content: center; margin-top: 22px; flex-wrap: wrap;
+}
+
+.preview-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: linear-gradient(135deg, var(--deep), var(--deep-mid));
+  border: 1.5px solid var(--gold);
+  color: var(--gold-light);
+  padding: 11px 26px; border-radius: 30px;
+  font-family: var(--sans); font-size: 11px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(201,168,76,0.18);
+}
+
+.preview-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(201,168,76,0.28);
+}
+
+.close-modal-btn {
+  background: transparent;
+  color: var(--muted);
+  border: 1.5px solid var(--border);
+  padding: 11px 26px; border-radius: 30px;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  box-shadow: none; cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.close-modal-btn:hover {
+  background: var(--warm); color: var(--text);
+  transform: none; box-shadow: none;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .link-modal-box { padding: 32px 22px 26px; }
+  .link-modal-actions { flex-direction: column; align-items: stretch; }
+  .preview-btn, .close-modal-btn { justify-content: center; text-align: center; }
+}
