@@ -5,15 +5,16 @@ import { supabase } from "../modules/supabase.js";
 import { uploadFile } from "../modules/fileUpload.js";
 import { saveItinerary, updateItinerary, fetchItinerary } from "../modules/itineraryApi.js";
 import { createDayBlock } from "../modules/dayBlock.js";
-import { createTripInfoPanel } from "./tripInfoPanel.js";
-
-const formContainer = document.getElementById("yourFormContainer");
-formContainer.insertBefore(createTripInfoPanel(), formContainer.firstChild);
+import { createTripInfoPanel } from "../modules/tripInfoPanel.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
+    // ── Trip Info Panel (outside form, top of <main>) ──────────
+    const main = document.querySelector("main");
+    const form = document.getElementById("itineraryForm");
+    main.insertBefore(createTripInfoPanel(), form);
+
     const addDayBtn = document.getElementById("addDayBtn");
     const daysContainer = document.getElementById("daysContainer");
-    const form = document.getElementById("itineraryForm");
     const clearBtn = document.getElementById("clearAllBtn");
 
     const params = new URLSearchParams(window.location.search);
@@ -34,6 +35,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const data = await fetchItinerary(editId);
         if (data?.content) {
+            // Pre-fill trip info panel from first day
+            const first = data.content[0];
+            if (first) {
+                const destEl = document.getElementById("tripDestination");
+                const dotEl = document.getElementById("tripDaysOfTravel");
+                const paxEl = document.getElementById("tripPax");
+                if (destEl && first.destination) destEl.value = first.destination;
+                if (dotEl && first.daysOfTravel) dotEl.value = first.daysOfTravel;
+                if (paxEl && first.pax) paxEl.value = first.pax;
+            }
+
             for (const day of data.content) {
                 const block = createDayBlock();
                 daysContainer.appendChild(block);
@@ -218,9 +230,9 @@ async function _collectDays() {
     for (const [index, block] of [...document.querySelectorAll(".dayBlock")].entries()) {
         const date = block.querySelector(".day-date")?.value || "";
         const title = block.querySelector(".day-title")?.value.trim() || "";
-        const destination = document.getElementById("tripDestination").value;
-        const daysOfTravel = document.getElementById("tripDaysOfTravel").value;
-        const pax = document.getElementById("tripPax").value, ;
+        const destination = document.getElementById("tripDestination")?.value.trim() || "";
+        const daysOfTravel = document.getElementById("tripDaysOfTravel")?.value.trim() || "";
+        const pax = document.getElementById("tripPax")?.value.trim() || "";
         const desc = block.querySelector(".desc")?.value || "";
 
         // Photos

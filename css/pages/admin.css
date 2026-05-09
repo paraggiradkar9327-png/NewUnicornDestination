@@ -10,7 +10,6 @@
 @import '../modules/layout.css';
 @import '../modules/modal.css';
 
-
 /* ════════════════════════════════
    FORM INTRO
    ════════════════════════════════ */
@@ -554,5 +553,131 @@ button:active {
 
   .slot-text {
     font-size: 9px;
+  }
+}
+
+/* ════════════════════════════════
+   TRIP INFO PANEL
+   ════════════════════════════════ */
+
+.trip-info-panel {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  animation: slideIn 0.4s ease both;
+}
+
+/* Header bar — matches .dayBlock h3 */
+.trip-info-heading {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff;
+  background: linear-gradient(90deg, var(--deep) 0%, var(--deep-mid) 100%);
+  padding: 16px 24px;
+  margin: 0;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 2px solid var(--gold);
+}
+
+.trip-info-heading::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* Subtext */
+.trip-info-subtext {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  margin: 0;
+  padding: 16px 24px 0;
+}
+
+/* 3-column grid */
+.trip-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 18px 24px 24px;
+}
+
+/* Individual field */
+.trip-info-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.trip-info-icon {
+  font-size: 18px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+/* Label — matches .dayBlock label */
+.trip-info-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+
+/* Input — matches .dayBlock input[type="text"] */
+.trip-info-input {
+  width: 100%;
+  border: 1.5px solid rgba(201, 168, 76, 0.3);
+  border-radius: var(--radius-sm);
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--text);
+  background: var(--cream);
+  outline: none;
+  padding: 11px 14px;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  box-sizing: border-box;
+}
+
+.trip-info-input::placeholder {
+  color: var(--muted);
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.trip-info-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.12);
+  background: #fff;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .trip-info-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 12px 24px 20px;
+  }
+
+  .trip-info-field {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+  }
+
+  .trip-info-field:last-child {
+    border-bottom: none;
   }
 }
