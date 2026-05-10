@@ -2,12 +2,19 @@
 // ADMIN PAGE — Entry Point
 // ==============================
 import { supabase } from "../modules/supabase.js";
+import { requireAuth, injectAuthTopbar } from "../modules/auth.js";
 import { uploadFile } from "../modules/fileUpload.js";
 import { saveItinerary, updateItinerary, fetchItinerary } from "../modules/itineraryApi.js";
 import { createDayBlock } from "../modules/dayBlock.js";
 import { createTripInfoPanel } from "../modules/tripInfoPanel.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
+    // ── AUTH GUARD — must be admin ──────────────────────────────
+    const currentUser = await requireAuth("admin");
+    if (!currentUser) return; // requireAuth already redirected
+
+    // ── Inject user topbar with logout button ───────────────────
+    await injectAuthTopbar(currentUser);
     // ── Trip Info Panel (outside form, top of <main>) ──────────
     const main = document.querySelector("main");
     const form = document.getElementById("itineraryForm");

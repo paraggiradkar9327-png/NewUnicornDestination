@@ -6,13 +6,20 @@ import { supabase } from "./supabase.js";
 /**
  * Insert a new itinerary record.
  * @param {Array} days - Array of day objects
- * @returns {Promise<string|null>} - The new record's UUID, or null on error
+ * @returns {Promise<string|null>} - The new record's ID, or null on error
  */
 export async function saveItinerary(days) {
     try {
+        // Get current logged-in user
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) {
+            console.error("No logged-in user found.");
+            return null;
+        }
+
         const { data, error } = await supabase
             .from("itineraries")
-            .insert([{ content: days }])
+            .insert([{ content: days, created_by: user.id }])
             .select();
 
         if (error) {
@@ -28,7 +35,7 @@ export async function saveItinerary(days) {
 
 /**
  * Update an existing itinerary record.
- * @param {string} id   - Record UUID to update
+ * @param {string} id   - Record ID to update
  * @param {Array}  days - Updated array of day objects
  * @returns {Promise<boolean>} - true on success, false on error
  */
@@ -60,6 +67,23 @@ export async function fetchItinerary(id) {
     if (error || !data) {
         console.error("Fetch error:", error);
         return null;
+    }
+    return data;
+}
+
+/**
+ * Fetch all itineraries (admin only).
+ * @returns {Promise<Array>} - Array of itinerary records
+ */
+export async function fetchAllItineraries() {
+    const { data, error } = await supabase
+        .from("itineraries")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+    if (error) {
+        console.error("Fetch all error:", error);
+        return [];
     }
     return data;
 }

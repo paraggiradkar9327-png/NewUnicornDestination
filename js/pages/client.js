@@ -4,6 +4,15 @@
 import { fetchItinerary } from "../modules/itineraryApi.js";
 import { showShareModal } from "../modules/shareModal.js";
 import { observeCards } from "../modules/scrollReveal.js";
+import { requireAuth, injectAuthTopbar } from "../modules/auth.js";
+
+// ── AUTH GUARD — any logged-in user ────────────────────────────
+(async () => {
+    const currentUser = await requireAuth(); // just must be logged in
+    if (!currentUser) return;
+    await injectAuthTopbar(currentUser);
+    loadItinerary();
+})();
 
 async function loadItinerary() {
     const params = new URLSearchParams(window.location.search);

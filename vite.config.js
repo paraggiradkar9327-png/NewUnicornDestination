@@ -6,14 +6,16 @@ export default defineConfig({
         outDir: "dist",
         rollupOptions: {
             input: {
-                admin: "./admin.html",
-                client: "./client.html",
-                preview: "./preview.html",
+                login:    "./login.html",
+                register: "./register.html",
+                admin:    "./admin.html",
+                client:   "./client.html",
+                preview:  "./preview.html",
             }
         }
     },
     server: {
         port: 5173,
-        open: "/admin.html"   // ← auto opens this page on npm run dev
+        open: "/login.html"   // ← opens login page on npm run dev
     }
 });

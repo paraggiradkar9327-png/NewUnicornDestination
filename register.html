@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unicorn Destinations – Create Account</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css//modules/auth.css">
+</head>
+
+<body>
+
+  <!-- ── HERO ── -->
+  <header class="hero">
+    <div class="hero-badge">Join Us</div>
+    <div class="hero-logo-wrap">
+      <img src="/assest/DESTINATION.png" alt="Unicorn Destinations Logo" class="hero-logo">
+    </div>
+    <h1 class="hero-title"><em>Unicorn</em> Destinations</h1>
+    <div class="hero-divider">
+      <div class="hero-diamond"></div>
+    </div>
+    <p class="hero-sub">Create your account</p>
+  </header>
+
+  <!-- ── GOLD RIBBON ── -->
+  <div class="ribbon">✦ &nbsp; Crafting Journeys Worth Remembering &nbsp; ✦</div>
+
+  <!-- ── REGISTER FORM ── -->
+  <main class="auth-main">
+    <div class="auth-card">
+
+      <div class="auth-card-header">
+        <p class="section-eyebrow">New Account</p>
+        <h2 class="auth-heading">Create <em>Account</em></h2>
+        <div class="section-rule"><span></span></div>
+      </div>
+
+      <!-- Alert box -->
+      <div class="auth-alert" id="registerAlert" style="display:none;"></div>
+
+      <div class="field-group">
+        <label class="field-label">Full Name <span class="required">*</span></label>
+        <div class="field-wrap">
+          <span class="field-icon">👤</span>
+          <input type="text" id="regName" class="field-input" placeholder="Your full name" autocomplete="name">
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Email Address <span class="required">*</span></label>
+        <div class="field-wrap">
+          <span class="field-icon">✉</span>
+          <input type="email" id="regEmail" class="field-input" placeholder="you@example.com" autocomplete="email">
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Phone Number <span class="optional">(optional)</span></label>
+        <div class="field-wrap phone-wrap">
+          <span class="phone-prefix">🇮🇳 +91</span>
+          <input type="tel" id="regPhone" class="field-input phone-input" placeholder="9876543210" maxlength="10">
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Password <span class="required">*</span></label>
+        <div class="field-wrap">
+          <span class="field-icon">🔒</span>
+          <input type="password" id="regPassword" class="field-input" placeholder="Min. 8 characters" autocomplete="new-password">
+          <button type="button" class="eye-toggle" onclick="toggleEye('regPassword', this)">👁</button>
+        </div>
+        <div class="password-strength" id="pwStrength" style="display:none;">
+          <div class="pw-bar"><div class="pw-fill" id="pwFill"></div></div>
+          <span class="pw-label" id="pwLabel"></span>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Account Role <span class="required">*</span></label>
+        <div class="field-wrap">
+          <span class="field-icon">🛡</span>
+          <select id="regRole" class="field-input field-select">
+            <option value="client">Client (Traveler)</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="btn-primary" id="btnRegister" onclick="doRegister()">
+        <span class="btn-label">Create Account</span>
+        <span class="btn-spinner" id="spRegister" style="display:none;"></span>
+      </button>
+
+      <div class="auth-switch">
+        Already have an account? <a href="/login.html">Sign in</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-logo-wrap">
+      <img src="/assest/DESTINATION.png" alt="Unicorn Destinations" class="footer-logo">
+    </div>
+    <p class="footer-brand">Unicorn Destinations</p>
+    <p class="footer-tagline">Crafting Journeys Worth Remembering</p>
+    <div class="footer-rule"></div>
+    <div class="footer-links">
+      <a href="tel:8857955359">📞 8857955359</a>
+      <a href="mailto:unicorndestinations@gmail.com">✉️ unicorndestinations@gmail.com</a>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/pages/register.js"></script>
+</body>
+
+</html>

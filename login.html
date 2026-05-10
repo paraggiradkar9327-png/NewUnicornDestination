@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unicorn Destinations – Sign In</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/modules/auth.css">
+</head>
+
+<body>
+
+  <!-- ── HERO ── -->
+  <header class="hero">
+    <div class="hero-badge">Welcome Back</div>
+    <div class="hero-logo-wrap">
+      <img src="/assest/DESTINATION.png" alt="Unicorn Destinations Logo" class="hero-logo">
+    </div>
+    <h1 class="hero-title"><em>Unicorn</em> Destinations</h1>
+    <div class="hero-divider">
+      <div class="hero-diamond"></div>
+    </div>
+    <p class="hero-sub">Sign in to your account</p>
+  </header>
+
+  <!-- ── GOLD RIBBON ── -->
+  <div class="ribbon">✦ &nbsp; Crafting Journeys Worth Remembering &nbsp; ✦</div>
+
+  <!-- ── AUTH FORM ── -->
+  <main class="auth-main">
+    <div class="auth-card">
+
+      <div class="auth-card-header">
+        <p class="section-eyebrow">Account Access</p>
+        <h2 class="auth-heading">Sign <em>In</em></h2>
+        <div class="section-rule"><span></span></div>
+      </div>
+
+      <!-- Alert box -->
+      <div class="auth-alert" id="loginAlert" style="display:none;"></div>
+
+      <!-- Login method tabs -->
+      <div class="method-tabs">
+        <button class="method-tab active" id="tabEmail" onclick="switchMethod('email')">
+          <span class="tab-icon">✉</span> Email
+        </button>
+        <button class="method-tab" id="tabPhone" onclick="switchMethod('phone')">
+          <span class="tab-icon">📱</span> Phone + OTP
+        </button>
+      </div>
+
+      <!-- EMAIL LOGIN -->
+      <div id="emailSection">
+        <div class="field-group">
+          <label class="field-label">Email Address</label>
+          <div class="field-wrap">
+            <span class="field-icon">✉</span>
+            <input type="email" id="loginEmail" class="field-input" placeholder="you@example.com" autocomplete="email">
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Password</label>
+          <div class="field-wrap">
+            <span class="field-icon">🔒</span>
+            <input type="password" id="loginPassword" class="field-input" placeholder="••••••••" autocomplete="current-password">
+            <button type="button" class="eye-toggle" onclick="toggleEye('loginPassword', this)">👁</button>
+          </div>
+        </div>
+        <button class="btn-primary" id="btnEmailLogin" onclick="doEmailLogin()">
+          <span class="btn-label">Sign In</span>
+          <span class="btn-spinner" id="spEmailLogin" style="display:none;"></span>
+        </button>
+      </div>
+
+      <!-- PHONE OTP LOGIN -->
+      <div id="phoneSection" style="display:none;">
+        <div class="field-group">
+          <label class="field-label">Phone Number</label>
+          <div class="field-wrap phone-wrap">
+            <span class="phone-prefix">🇮🇳 +91</span>
+            <input type="tel" id="loginPhone" class="field-input phone-input" placeholder="9876543210" maxlength="10">
+          </div>
+        </div>
+
+        <div id="otpRow" style="display:none;">
+          <div class="field-group">
+            <label class="field-label">OTP Code</label>
+            <div class="field-wrap">
+              <span class="field-icon">🔑</span>
+              <input type="text" id="loginOtp" class="field-input" placeholder="6-digit code" maxlength="6" inputmode="numeric">
+            </div>
+          </div>
+          <button class="btn-primary" id="btnVerifyOtp" onclick="doVerifyOtp()">
+            <span class="btn-label">Verify & Sign In</span>
+            <span class="btn-spinner" id="spVerifyOtp" style="display:none;"></span>
+          </button>
+        </div>
+
+        <button class="btn-secondary" id="btnSendOtp" onclick="doSendOtp()">
+          <span class="btn-label" id="sendOtpLabel">Send OTP</span>
+          <span class="btn-spinner" id="spSendOtp" style="display:none;"></span>
+        </button>
+      </div>
+
+      <div class="auth-switch">
+        Don't have an account? <a href="/register.html">Create one</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-logo-wrap">
+      <img src="/assest/DESTINATION.png" alt="Unicorn Destinations" class="footer-logo">
+    </div>
+    <p class="footer-brand">Unicorn Destinations</p>
+    <p class="footer-tagline">Crafting Journeys Worth Remembering</p>
+    <div class="footer-rule"></div>
+    <div class="footer-links">
+      <a href="tel:8857955359">📞 8857955359</a>
+      <a href="mailto:unicorndestinations@gmail.com">✉️ unicorndestinations@gmail.com</a>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/pages/login.js"></script>
+</body>
+
+</html>
