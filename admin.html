@@ -32,18 +32,26 @@
             <p class="section-eyebrow">Itinerary Builder</p>
             <h2 class="form-intro-heading">Craft the <em>Journey</em></h2>
             <div class="section-rule"><span></span></div>
-            <p class="form-intro-sub">Add each day's description, photos and videos. When done, submit to generate a
-                shareable client link.</p>
+            <p class="form-intro-sub">Fill in the Trip Overview below, then click <strong>Show Itinerary</strong> to
+                load an existing itinerary — or click <strong>Add Day</strong> to build a new one from scratch.</p>
         </div>
     </div>
 
     <main>
+        <!-- Search status banner -->
+        <div id="searchStatus" class="search-status" style="display:none;"></div>
+
         <form id="itineraryForm">
             <div id="daysContainer"></div>
             <div class="form-actions">
                 <button type="button" id="addDayBtn">
                     <span class="btn-icon">+</span>
                     <span>Add Day</span>
+                </button>
+                <!-- NEW: Show Itinerary button sits right next to Add Day -->
+                <button type="button" id="showItineraryBtn" class="showItineraryBtn">
+                    <span class="btn-icon" id="showItineraryIcon">🔍</span>
+                    <span id="showItineraryLabel">Show Itinerary</span>
                 </button>
                 <button type="button" id="clearAllBtn" disabled>
                     <span class="btn-icon">✕</span>

@@ -10,7 +10,6 @@ import { supabase } from "./supabase.js";
  */
 export async function saveItinerary(days) {
     try {
-        // Get current logged-in user
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) {
             console.error("No logged-in user found.");
@@ -86,4 +85,58 @@ export async function fetchAllItineraries() {
         return [];
     }
     return data;
+}
+
+/**
+ * Search for itineraries by destination and daysOfTravel.
+ *
+ * The itinerary content is stored as a JSONB array of day-objects.
+ * Each day object has { destination, daysOfTravel, ... }.
+ * We search inside the first element of the content array using
+ * Postgres JSONB containment (@>).
+ *
+ * @param {string} destination  - e.g. "Goa"
+ * @param {string} daysOfTravel - e.g. "5N / 4D"
+ * @returns {Promise<Object|null>} - Most recent matching record, or null
+ */
+export async function searchItineraryByTrip(destination, daysOfTravel) {
+    try {
+        // Fetch all and filter client-side (works with any Supabase plan).
+        // For large datasets you can use a Postgres function instead.
+        const { data, error } = await supabase
+            .from("itineraries")
+            .select("*")
+            .order("created_at", { ascending: false });
+
+        if (error) {
+            console.error("Search fetch error:", error);
+            return null;
+        }
+        if (!data || data.length === 0) return null;
+
+        const destLower = destination.trim().toLowerCase();
+        const dotrLower = daysOfTravel.trim().toLowerCase();
+
+        // Filter: check the first day's destination & daysOfTravel fields
+        const match = data.find(record => {
+            const content = record.content;
+            if (!Array.isArray(content) || content.length === 0) return false;
+
+            // Check every day (they all share the same trip-level fields)
+            const first = content[0];
+            const recDest = (first.destination || "").trim().toLowerCase();
+            const recDotr = (first.daysOfTravel || "").trim().toLowerCase();
+
+            const destMatch = recDest.includes(destLower) || destLower.includes(recDest);
+            const dotrMatch = recDotr === dotrLower ||
+                              recDotr.replace(/\s/g, "") === dotrLower.replace(/\s/g, "");
+
+            return destMatch && dotrMatch;
+        });
+
+        return match || null;
+    } catch (err) {
+        console.error("Unexpected search error:", err);
+        return null;
+    }
 }
